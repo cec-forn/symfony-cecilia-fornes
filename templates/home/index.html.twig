@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    {% for user in users %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ asset(user.picture) }}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{ user.lastname }} {{ user.firstname }}</h5>
+                {% for s in user.sector %}
+                    <h6>{{ s.name }}</h6>
+                {% endfor %}
+                <p class="card-text">{{ user.email }}</p>
+                <a href="{{path('app_home_employee', {'id':user.id})}}" class="btn btn-primary">Voir plus</a>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
